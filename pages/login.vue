@@ -19,6 +19,17 @@
         </button>
       </form>
       <p v-if="errorMessage" class="text-red-500 mt-4">{{ errorMessage }}</p>
+      <p class="mt-4">
+        <NuxtLink to="/reset-password" class="text-blue-500 underline">
+          ¿Olvidaste tu contraseña?
+        </NuxtLink>
+      </p>
+      <p class="mt-2">
+        ¿No tienes una cuenta? 
+        <NuxtLink to="/register" class="text-blue-500 underline">
+          Regístrate aquí
+        </NuxtLink>
+      </p>
     </div>
   </template>
   
@@ -36,6 +47,8 @@
   
   // Función para iniciar sesión
   const login = async () => {
+    errorMessage.value = ''; // Limpia mensajes anteriores
+  
     try {
       if (!email.value || !password.value) {
         errorMessage.value = 'Por favor, completa todos los campos.';
